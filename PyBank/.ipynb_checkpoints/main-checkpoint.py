@@ -49,9 +49,31 @@ for number in profit_loss_month:
 average = round(total/len(profit_loss_month),2)
 #--------------------------------------
 
-#use max function to store the maximum value of the profit_loss_month list
-max_profit = max(profit_loss_month)
+#remove first item from 'months' list so we can correctly align the 'months' and 'profit_loss_month' lists for zipping
+months.remove('Jan-2010')
 
-#use min function to store the minimum value of the profit_loss_month list
-min_profit = min(profit_loss_month)
+#zip 'months' list and 'profit_loss_month', turn into a list, and then find the respective max/min profits by passing a lambda function to the key argument of the 'max'/'min' function that tells the function to search the 2nd values of the zipped list
+#return the max/min values and associated months by indexing to the desired item and save as variable
+max_month = max(list(zip(months, profit_loss_month)),key = lambda x: x[1])[0]
+max_profit = max(list(zip(months, profit_loss_month)),key = lambda x: x[1])[1]
+min_month = min(list(zip(months, profit_loss_month)),key = lambda x: x[1])[0]
+min_profit = min(list(zip(months, profit_loss_month)),key = lambda x: x[1])[1]
 
+#print the results of the prior analysis, using f-strings to assign respective variables
+print(f"Financial Analysis")
+print(f"------------------")
+print(f"Total Months: {number_of_months}")
+print(f"Total: ${profit_loss_total}")
+print(f"Average Change: ${average}")
+print(f"Greatest Increase in Profits: {max_month} (${max_profit})")
+print(f"Greatest Decrease in Profits: {min_month} (${min_profit})")
+
+#save results of analysis to a txt file
+with open ('Financial Analysis.txt', 'w') as f:
+    f.write(f"Financial Analysis\n")
+    f.write(f"----------------------\n")
+    f.write(f"Total Months: {number_of_months}\n")
+    f.write(f"Total: ${profit_loss_total}\n")
+    f.write(f"Average Change: ${average}\n")
+    f.write(f"Greatest Increase in Profits: {max_month} (${max_profit})\n")
+    f.write(f"Greatest Decrease in Profits: {min_month} (${min_profit})\n")
