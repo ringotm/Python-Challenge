@@ -34,7 +34,7 @@ profit_loss_month = [profit_loss[i+1] - profit_loss[i] for i in range(len(profit
 
 
 #find average of profit_loss_month list
-#--------------------------------------
+#---------------------------------------------------
 #initialize total to 0
 total = 0
 
@@ -46,7 +46,7 @@ for number in profit_loss_month:
 
 #return average by dividing the total by the length of the profit_loss_month list and round to 2 decimals
 average = round(total/len(profit_loss_month),2)
-#--------------------------------------
+#---------------------------------------------------
 
 #remove first item from 'months' list so we can correctly align the 'months' and 'profit_loss_month' lists for zipping
 months.remove('Jan-2010')
