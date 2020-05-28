@@ -51,4 +51,32 @@ for key, value in candidate_dict.items():
     percent_won[key] = round(value/total_votes*100,2)
 #------------------------------------------------------------------------------------------------
 
-print
+#save the winner to a variable by selecting the max value from candidate_dict, using the 'key' argument to tell the function to search based on the value from each key/value pair
+winner = max(candidate_dict, key=lambda key: candidate_dict[key])
+
+#print out results
+print('Election Results')
+print('------------------------')
+print(f"Total Votes: {total_votes}")
+print('------------------------')
+print(f"Khan: {percent_won['Khan']}% ({candidate_dict['Khan']})")
+print(f"Correy: {percent_won['Correy']}% ({candidate_dict['Correy']})")
+print(f"Li: {percent_won['Li']}% ({candidate_dict['Li']})")
+print(f'''O'Tooley: {percent_won["O'Tooley"]}% ({candidate_dict["O'Tooley"]})''')
+print('------------------------')
+print(f"Winner: {winner}")
+print('------------------------')
+
+#export the results to a text file
+with open('Election_Results.txt', 'w') as f:
+    f.write('Election Results\n')
+    f.write('------------------------\n')
+    f.write(f"Total Votes: {total_votes}\n")
+    f.write('------------------------\n')
+    f.write(f"Khan: {percent_won['Khan']}% ({candidate_dict['Khan']})\n")
+    f.write(f"Correy: {percent_won['Correy']}% ({candidate_dict['Correy']})\n")
+    f.write(f"Li: {percent_won['Li']}% ({candidate_dict['Li']})\n")
+    f.write(f'''O'Tooley: {percent_won["O'Tooley"]}% ({candidate_dict["O'Tooley"]})\n''')
+    f.write('------------------------\n')
+    f.write(f"Winner: {winner}\n")
+    f.write('------------------------')
